@@ -2,6 +2,8 @@
 import { product } from "../api/product.js";
 import { fetchQuantityFromCartLS } from "./fetchQuantityFromCartLs.js";
 import { getCartProductFromLS } from "./getCartProducts.js";
+import { incrementDecrement } from "./incrementDecrement.js";
+import { updateCartProductTotal } from "./updateCartProductTotal.js";
 
 
 let cartProducts = getCartProductFromLS();
@@ -19,7 +21,7 @@ const cartElement = document.querySelector("#productCartContainer");
 const templateContainer = document.querySelector("#productCartTemplate");
 
 const showCartProduct = () => {
-  console.log("zzz")
+ // console.log("zzz")
   filterProducts.forEach((curProd) => {
     const { category, id, image, name, stock, price } = curProd;
 
@@ -36,6 +38,19 @@ const showCartProduct = () => {
       lSActualData.quantity;
     productClone.querySelector(".productPrice").textContent =
       lSActualData.price;
+     
+
+       // handle increment and decrement button
+    productClone
+    .querySelector(".stockElement")
+    .addEventListener("click", (event) => {
+      incrementDecrement(event, id, stock, price);
+    });
+
+    
+    productClone
+    .querySelector(".remove-to-cart-button")
+    .addEventListener("click", () => removeProdFromCart(id));
 
     cartElement.appendChild(productClone);
   });
@@ -49,4 +64,4 @@ const showCartProduct = () => {
 // -----------------------------------------------------
 // calculating the card total in our cartProducts page
 // --------------------------------------------------------
-// updateCartProductTotal();               /
+   updateCartProductTotal();               
