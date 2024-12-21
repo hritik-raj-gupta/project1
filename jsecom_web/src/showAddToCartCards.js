@@ -3,6 +3,7 @@ import { product } from "../api/product.js";
 import { fetchQuantityFromCartLS } from "./fetchQuantityFromCartLs.js";
 import { getCartProductFromLS } from "./getCartProducts.js";
 import { incrementDecrement } from "./incrementDecrement.js";
+import { removeProdFromCart } from "./removeProdFromCart.js";
 import { updateCartProductTotal } from "./updateCartProductTotal.js";
 
 
